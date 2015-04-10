@@ -1,0 +1,4 @@
+<h1>Parkovacie miesta</h1>
+<ol class="microposts">
+  <%= render @parking_places %>
+</ol>

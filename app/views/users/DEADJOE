@@ -1,0 +1,35 @@
+
+*** These modified files were found in JOE when it aborted on Fri Apr  3 19:16:23 2015
+*** JOE was aborted because the terminal closed
+
+*** File 'index.html.erb'
+<! DOCTYPE html>
+<html>
+<header>
+  <title>Index User</title>
+</header>
+
+<h1>All users</h1>
+<%= will_paginate %>
+<ul class= "users">
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
+</html>
+*** File '(Unnamed)'
+Gemfile
+Gemfile
+index.html.erb
+Gemfile
+users_controller.rb
+users_controller.rb
+custom.css.scss
+custom.css.scss
+application.css
+users.scss
+index.html.erb

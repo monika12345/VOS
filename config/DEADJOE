@@ -1,0 +1,94 @@
+
+*** These modified files were found in JOE when it aborted on Wed Apr  1 19:41:36 2015
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+root
+
+*** File 'routes.rb'
+Rails.application.routes.draw do
+  root 'static_pages#login'
+
+  get 'static_pages/registration'
+
+ 
+  get 'services/new'
+
+  get 'payments/new'
+
+  get 'rentals/new'
+
+  get 'locations/new'
+
+  get 'park_places/new'
+
+  get 'users/new'
+
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Example resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Example resource route with more complex sub-resources:
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', on: :collection
+  #     end
+  #   end
+
+  # Example resource route with concerns:
+  #   concern :toggleable do
+  #     post 'toggle'
+  #   end
+  #   resources :posts, concerns: :toggleable
+  #   resources :photos, concerns: :toggleable
+
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+end
+
+*** File '(Unnamed)'
+login.html.erb
+login.html.erb
+registration.html.erb
+login.html.erb
+login.html.erb
+registration.html.erb
+registration.html.erb
+config/ru
+config/routes.rb
+application.html.erb
+routes.rb

@@ -1,0 +1,8 @@
+<li id="parking_place-<%= parking_place.id %>">
+    <%= link_to gravatar_for(parking_place.user, size: 50), parking_place.user %>
+    <span class="user"><%= link_to parking_place.user.name, parking_place.user %></span>
+     <span class="content"><%= parking_place.spz %></span>
+     <span class="timespan">
+           Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
+    </span>
+</li>

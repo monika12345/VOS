@@ -1,0 +1,4 @@
+
+<h1>Log in</h1>
+<div class="center jumbotron">
+<%= link_to "Zaregistrovať sa", '#', class: "btn btn-lg btn-primary" %>
