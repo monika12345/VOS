@@ -17,13 +17,20 @@ class ParkingPlacesController < ApplicationController
   end
   
   def create
-      @parking_place = current_user.parking_places.build(parking_places_params)
-      if @parking_place.save
-            flash[:success] = "Parkovacie miesto vytvorene"
-            redirect_to root_url
-       else
-          render 'static_pages/login'
-       end
+       # @parking_place = current_user.parking_places.build(parking_places_params)
+      
+       @idcko= current_user.id
+        query = "INSERT INTO parking_places (user_id, spz, ulica, location_id, created_at, updated_at) VALUES ( #{@idcko} ,  '#{params[:parking_place][:spz]}' , '#{params[:parking_place][:ulica]}' , #{params[:parking_place][:location_id]}, (now()), (now()))"     
+    # @parking_place = current_user.parking_places.build(parking_places_params)
+     connection = ActiveRecord::Base.connection
+        @parking_place = connection.execute(query)
+      
+      #if @parking_place.save
+       #    flash[:success] = "Parkovacie miesto vytvorene"
+          redirect_to root_url
+     # else
+     #     render 'static_pages/login'
+      # end
    end
 
 

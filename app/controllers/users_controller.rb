@@ -16,7 +16,9 @@ before_action :admin_user,  only: :destroy
 
  
    def destroy
-       User.find(params[:id]).destroy
+       User.find_by_sql("DELETE FROM users WHERE  users.id = #{params[:id]}")
+          # User.find(params[:id]).destroy
+           
        flash[:success] = "User deleted"
        redirect_to users_url
   end
@@ -33,7 +35,8 @@ before_action :admin_user,  only: :destroy
   
 
   def create
-      @user = User.new(user_params)
+     
+   @user = User.new(user_params)
       if @user.save
         log_in @user
         flash[:success] = "Welcome to the Sample App!"
@@ -48,13 +51,17 @@ before_action :admin_user,  only: :destroy
    end 
    
    def update
-     @user = User.find(params[:id])
-     if @user.update_attributes(user_params)
-        flash[:success] = "Profile update"
-        redirect_to @user     
-     else
-        render 'edit'
-     end
+
+     query = "UPDATE users SET name = '#{params[:user][:name]}', email = '#{params[:user][:email]}', updated_at = now() WHERE id = #{@user.id}"
+     connection = ActiveRecord::Base.connection
+     connection.execute(query)
+     #@user = User.find(params[:id])
+     #if @user.update_attributes(user_params)
+      #  flash[:success] = "Profile update"
+       redirect_to user_url
+     #else
+      #  render 'edit'
+    #end
    end
    
    
