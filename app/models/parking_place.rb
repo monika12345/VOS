@@ -7,4 +7,16 @@ class ParkingPlace < ActiveRecord::Base
   validates :user_id, presence: true
  
   validates :spz, presence: true
+
+
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      ParkingPlace.all
+    end
+  end
+
+
 end

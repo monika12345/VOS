@@ -1,4 +1,10 @@
-<h1>Parkovacie miesta</h1>
+<h1>Parkovacie miesta @pocet </h1>
+
+<h1>Statistika</h1>
+<% @pocet.each do |p| %>
+    <h3><%=  p["count"]   %><%= p["ulica"]%></h3>
+
+<% end %>
 <ol class="parking_places">
   <%= render @parking_places %>
 </ol>

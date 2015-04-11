@@ -4,8 +4,9 @@ before_action :correct_user, only: [:edit, :update]
 before_action :admin_user,  only: :destroy
 
    def show
-       @user = User.find(params[:id])
-       @parking_places = @user.parking_places.paginate(page: params[:page])
+    @user = User.find_by_sql("SELECT * FROM users WHERE users.id = #{params[:id]}").first
+     #@user = User.find(params[:id])
+    @parking_places = @user.parking_places.paginate(page: params[:page])
    end
 
 
@@ -46,8 +47,9 @@ before_action :admin_user,  only: :destroy
        end
       end
 
-   def edit 
-     @user = User.find(params[:id])
+   def edit
+   
+    # @user = User.find(params[:id])
    end 
    
    def update
@@ -60,6 +62,7 @@ before_action :admin_user,  only: :destroy
       #  flash[:success] = "Profile update"
        redirect_to user_url
      #else
+
       #  render 'edit'
     #end
    end

@@ -10,10 +10,22 @@ class ParkingPlacesController < ApplicationController
     @user = User.find(@parking_place.user_id)
    
   end
-  
+
+ def search
+   @parking_places = ParkingPlace.search params[:search]
+ end
+
   def index
+
+   # @pocet= ParkingPlace.fin_by_sql( "SELECT  Count(*) FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica LIMIT(1))")
+   # connection = ActiveRecord::Base.connection
+   # connection.execute(q).first
+    # @parking_place = ParkingPlace.search(params[:search])
+    #@parking_place = ParkingPlace.find_by(params[:spz])
+    #redirect_to root_url
     @parking_places= ParkingPlace.all
     @parking_places = ParkingPlace.paginate(page: params[:page])
+    @pocet = pocetuz
   end
   
   def create
@@ -38,7 +50,12 @@ def destroy
 end
 
  private
- 
+
+ def pocetuz
+   query = "SELECT p.ulica , Count(*) as count FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica"
+   connection = ActiveRecord::Base.connection
+   connection.execute(query)
+ end
  def parking_places_params
 
    params.require(:parking_place).permit(:spz, :ulica, :location_id)

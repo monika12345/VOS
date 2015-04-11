@@ -1,1 +1,2 @@
 <%= @parking_place.spz %>
+<%= @user.name %>

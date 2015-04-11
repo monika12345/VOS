@@ -1,0 +1,6 @@
+<ul>
+    <% @parking_places.each do |t| %>
+  <li><%= link_to t.title, 
+    :action => 'show', :id => t.id  %></li>
+  <% end %>
+  </ul>
