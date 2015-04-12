@@ -26,6 +26,7 @@ class ParkingPlacesController < ApplicationController
     @parking_places= ParkingPlace.all
     @parking_places = ParkingPlace.paginate(page: params[:page])
     @pocet = pocetuz
+    @mestaa = mesta
   end
   
   def create
@@ -56,6 +57,15 @@ end
    connection = ActiveRecord::Base.connection
    connection.execute(query)
  end
+
+ def mesta
+
+     query = "SELECT  l.city, Count(*) as count FROM parking_places p JOIN locations l ON l.id = p.location_id GROUP BY l.city"
+     connection = ActiveRecord::Base.connection
+     connection.execute(query)
+
+ end
+
  def parking_places_params
 
    params.require(:parking_place).permit(:spz, :ulica, :location_id)
