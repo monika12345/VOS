@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  root 'static_pages#login'
+  root 'sessions#new'
 
   get 'registration' => 'users#new'
   get 'prihlasenie'  => 'static_pages#login'

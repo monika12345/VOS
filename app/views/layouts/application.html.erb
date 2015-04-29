@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>SkusobnyProjekt</title>
@@ -10,7 +10,8 @@
 
 
    <%= render 'layouts/header' %> 
-</body>                     
+</body> 
+<section class="featured">                    
   <div class="container"> 
 	<% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -23,7 +24,7 @@
 
 <%= yield %>
 
-
+</section>
 
 
 </html>

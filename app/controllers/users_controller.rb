@@ -4,8 +4,8 @@ before_action :correct_user, only: [:edit, :update]
 before_action :admin_user,  only: :destroy
 
    def show
-    @user = User.find_by_sql("SELECT * FROM users WHERE users.id = #{params[:id]}").first
-     #@user = User.find(params[:id])
+    #1.@user = User.find_by_sql("SELECT * FROM users WHERE users.id = #{params[:id]}").first
+     @user = User.find(params[:id])
     @parking_places = @user.parking_places.paginate(page: params[:page])
    end
 
@@ -17,8 +17,8 @@ before_action :admin_user,  only: :destroy
 
  
    def destroy
-       User.find_by_sql("DELETE FROM users WHERE  users.id = #{params[:id]}")
-          # User.find(params[:id]).destroy
+      #2. User.find_by_sql("DELETE FROM users WHERE  users.id = #{params[:id]}")
+           User.find(params[:id]).destroy
            
        flash[:success] = "User deleted"
        redirect_to users_url
@@ -54,17 +54,17 @@ before_action :admin_user,  only: :destroy
    
    def update
 
-     query = "UPDATE users SET name = '#{params[:user][:name]}', email = '#{params[:user][:email]}', updated_at = now() WHERE id = #{@user.id}"
-     connection = ActiveRecord::Base.connection
-     connection.execute(query)
-     #@user = User.find(params[:id])
-     #if @user.update_attributes(user_params)
-      #  flash[:success] = "Profile update"
+   #3.  query = "UPDATE users SET name = '#{params[:user][:name]}', email = '#{params[:user][:email]}', updated_at = now() WHERE id = #{@user.id}"
+    #3. connection = ActiveRecord::Base.connection
+    #3. connection.execute(query)
+     @user = User.find(params[:id])
+     if @user.update_attributes(user_params)
+        flash[:success] = "Profile update"
        redirect_to user_url
-     #else
+     else
 
-      #  render 'edit'
-    #end
+        render 'edit'
+    end
    end
    
    
