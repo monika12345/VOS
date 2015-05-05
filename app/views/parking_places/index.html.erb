@@ -1,11 +1,32 @@
+<div class="container">
+  <div class ="row">
+         <div class = "col-xs-6 col-md-4">
+             <section class="panel panel2 panel-default">
+                  <div class="panel panel1 panel-default" xmlns="http://www.w3.org/1999/html">
+                      <div class = "panel-heading">
+                           <div class="mesta">MESTA</div>
+                      </div >
 
+                      <% @towns.each do |m| %>
+                            <h5><%=  m["city"]   %> <span>Pocet(<%= m["count"] %>)</span></h5>
+                      <% end %>
+                  </div>
 
-<h1>Zoznam miest, kde su dostupne parkovacie miesta</h1>
-<% @mestaa.each do |m| %>
-    <h3><%=  m["city"]   %></h3> <p>Pocet parkovacich miest(<%= m["count"] %>)</p>
+        <!--  <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
+          </iframe> -->
+                  <h2>Vyhladaj</h2>
+                  <p class="small">
+                      <%= render 'parking_places/search' %>
+                  </p>
 
-<% end %>
-<h1>Vsetky parkovacie miesta</h1>
-<ol class="parking_places">
-  <%= render @parking_places %>
-</ol>
+             </section>
+        </div>
+        <div class="col-xs-12 col-md-8">
+                <div class = "panel-heading">
+                    <ol class="parking_places">
+                        <%= render @parking_places %>
+                    </ol>
+                </div>
+        </div>
+  </div>
+</div>

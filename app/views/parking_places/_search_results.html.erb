@@ -1,6 +1,13 @@
 <ul>
-    <% @parking_places.each do |t| %>
-  <li><%= link_to t.title, 
-    :action => 'show', :id => t.id  %></li>
-  <% end %>
-  </ul>
+  <h1> Resulty</h1>
+  <% if @parking_places.respond_to?("each") %>
+      <% @parking_places.each do |t| %>
+          <li><%= link_to t.spz,
+                          :action => 'show', :id => t.id  %></li>
+      <% end %>
+  <% else %>
+       <%= link_to @parking_places.spz, :action => 'show', :id => @parking_places.id%> -->
+       <%= @parking_places.ulica %>
+
+  <% end%>
+</ul>

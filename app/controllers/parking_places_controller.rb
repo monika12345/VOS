@@ -1,6 +1,6 @@
 class ParkingPlacesController < ApplicationController
  before_action :logged_in_user, only: [:create, :destroy]  
-
+ attr_accessor :pp
   def new 
     @parking_place = ParkingPlace.new
   end
@@ -11,9 +11,10 @@ class ParkingPlacesController < ApplicationController
    
   end
 
- def search
-   @parking_places = ParkingPlace.search params[:search]
- end
+ #def search
+  # @parking_places= ParkingPlace.where(spz: params[:q]).first
+   #flash[:success] = "ParkingPlace found!"
+ #end
 
   def index
 
@@ -23,27 +24,41 @@ class ParkingPlacesController < ApplicationController
     # @parking_place = ParkingPlace.search(params[:search])
     #@parking_place = ParkingPlace.find_by(params[:spz])
     #redirect_to root_url
-    @parking_places= ParkingPlace.all
-    @parking_places = ParkingPlace.paginate(page: params[:page])
+
+
+
+
+    if(params[:q] != nil)
+          @pp= ParkingPlace.where(spz: params[:q]).first
+         @parking_places = @pp
+        if(params[:s] != nil)
+           @rr= ParkingPlace.where(ulica: params[:s])
+            @parking_places = @rr
+        end
+    else
+      @parking_places= ParkingPlace.all
+      @parking_places = ParkingPlace.paginate(page: params[:page])
+    end
+
     @pocet = pocetuz
-    @mestaa = mesta
+    @towns = mesta
   end
   
   def create
-       # @parking_place = current_user.parking_places.build(parking_places_params)
+        @parking_place = current_user.parking_places.build(parking_places_params)
       
-       @idcko= current_user.id
-        query = "INSERT INTO parking_places (user_id, spz, ulica, location_id, created_at, updated_at) VALUES ( #{@idcko} ,  '#{params[:parking_place][:spz]}' , '#{params[:parking_place][:ulica]}' , #{params[:parking_place][:location_id]}, (now()), (now()))"     
+       #@idcko= current_user.id
+       # query = "INSERT INTO parking_places (user_id, spz, ulica, location_id, created_at, updated_at) VALUES ( #{@idcko} ,  '#{params[:parking_place][:spz]}' , '#{params[:parking_place][:ulica]}' , #{params[:parking_place][:location_id]}, (now()), (now()))"
     # @parking_place = current_user.parking_places.build(parking_places_params)
-     connection = ActiveRecord::Base.connection
-        @parking_place = connection.execute(query)
+     #connection = ActiveRecord::Base.connection
+       # @parking_place = connection.execute(query)
       
-      #if @parking_place.save
-       #    flash[:success] = "Parkovacie miesto vytvorene"
-          redirect_to root_url
-     # else
-     #     render 'static_pages/login'
-      # end
+      if @parking_place.save
+          flash[:success] = "Parkovacie miesto vytvorene"
+          redirect_to parking_places_path
+      else
+          render 'static_pages/login'
+       end
    end
 
 
@@ -60,10 +75,12 @@ end
 
  def mesta
 
-     query = "SELECT  l.city, Count(*) as count FROM parking_places p JOIN locations l ON l.id = p.location_id GROUP BY l.city"
-     connection = ActiveRecord::Base.connection
-     connection.execute(query)
+    # query = "SELECT  l.city, Count(*) as count FROM parking_places p JOIN locations l ON l.id = p.location_id GROUP BY l.city"
+     #connection = ActiveRecord::Base.connection
+    # connection.execute(query)
 
+
+     @m =  Location.select("locations.city, count(*) AS count").joins("LEFT JOIN parking_places ON parking_places.location_id = locations.id").group("locations.id")
  end
 
  def parking_places_params

@@ -1,8 +1,19 @@
-<li id="parking_place-<%= parking_place.id %>">
 
-    <span class="user"><%= link_to parking_place.user.name, parking_place.user %></span>
-     <span class="content"><%= parking_place.spz %></span>
-     <span class="timespan">
+
+
+
+     <h4 class="user"><%= link_to parking_place.user.name, parking_place.user %></h4>
+     <h3 class="content"><%= parking_place.spz %></h3>
+       <h4><%= parking_place.location.city %></h4>
+      <h4>Ulica: <%= parking_place.ulica %></h4>
+     <h7 class="timespan">
            Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
-    </span>
-</li>
+     </h7>
+
+    <div class="col-sm-12">
+
+     <hr>
+
+      </hr>
+
+     </div>

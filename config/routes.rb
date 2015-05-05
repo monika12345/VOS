@@ -2,14 +2,17 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   root 'sessions#new'
-
+  get 'search' => 'parking_places#index'
+  post 'search' => 'parking_places#index'
   get 'registration' => 'users#new'
   get 'prihlasenie'  => 'static_pages#login'
+  get 'about' => 'static_pages#about'
   get  'login' => 'sessions#new'
   post 'login' => 'sessions#create' 
   delete 'logout' => 'sessions#destroy'
   get 'services/new'
-
+   get 'static_pages/login'
+  get 'static_pages/about'
   get 'payments/new'
 
   get 'rentals/new'

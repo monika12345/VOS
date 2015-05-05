@@ -1,3 +1,69 @@
 // Place all the styles related to the Parking_places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar-brand {
+  color: #777;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1em;
+  letter-spacing: -1px;
+}
+
+.section
+{
+  height: 600px;
+  background-color:#e7e7e7;
+  align-content: center;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+.mesta
+{
+  color:dodgerblue;
+  font-size: medium;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+.navbar-brand span {
+  color: #68A4C4;
+}
+.panel1
+{
+ // background: blanchedalmond;
+  display: inherit;
+  background: #ffffff;
+  min-height: 100px;
+  width: 300px;
+ // height: 100px;
+
+  margin: 30px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+p {
+  line-height: 1.5;
+}
+hr{
+  
+  color: #0085a1;
+}
+
+section.panel2
+{
+  background-color: #e3e3e3;
+}
+.container
+{
+  margin-top: 30px;
+
+
+}
+h3
+{
+
+  font-style: italic;
+
+}
