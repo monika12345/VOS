@@ -26,7 +26,7 @@ class ParkingPlacesController < ApplicationController
     #redirect_to root_url
 
 
-
+    @parking_plac = current_user.parking_places.build if logged_in?
 
     if(params[:q] != nil)
           @pp= ParkingPlace.where(spz: params[:q]).first

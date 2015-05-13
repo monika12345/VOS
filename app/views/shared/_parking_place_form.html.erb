@@ -1,11 +1,12 @@
 
-<%= form_for(@parking_place) do |f| %>
+<%= form_for(@parking_plac) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :spz, placeholder: "Vytvor spz..." %>
+    <%= f.text_area :spz, placeholder: "Vytvor spz..aaa." %>
      <%= f.text_area :ulica, placeholder: "Vytvor ulicu" %>
     <%= f.label :location_id %>
    <%= f.collection_select :location_id, Location.all, :id, :city %> 
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
+
 <% end %>
