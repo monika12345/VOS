@@ -1,18 +1,11 @@
 
 
-
-
-
-
         <% if logged_in? %>
         <nav class="navbar navbar-default navbar-custom navbar-fixed-top is-fixed is-visible">
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-            <li>
-
-              <%= link_to "Používatelia", users_path %>
-            </li>
+           
             <li>
 
               <%= link_to "Parkovanie", parking_places_path %>
@@ -24,6 +17,7 @@
 		                          Account <b class="caret"></b>
                          </a>
                                 <ul class="dropdown-menu">
+                                     <li><%= link_to "Pouzivatelia", users_path%>
                                       <li><%= link_to "Profile", current_user %></li>
                                       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                                       <li class="divider"></li>
