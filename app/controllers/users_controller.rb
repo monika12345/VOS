@@ -4,9 +4,7 @@ before_action :correct_user, only: [:edit, :update]
 before_action :admin_user,  only: :destroy
 
 
-   def my_parking_places
-     @mypark= current_user.
-   end
+ 
    def show
      @parking_plac = current_user.parking_places.build if logged_in?
     #1.@user = User.find_by_sql("SELECT * FROM users WHERE users.id = #{params[:id]}").first
