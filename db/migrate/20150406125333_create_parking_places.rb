@@ -12,7 +12,7 @@ class CreateParkingPlaces < ActiveRecord::Migration
      add_foreign_key :parking_places, :users
       add_foreign_key :parking_places, :locations
      add_index :parking_places, [:user_id, :created_at]
-    add_index :parking_places, [:location_id, :created_at]
+   # add_index :parking_places, [:location_id, :created_at]
     
            
   end
