@@ -40,8 +40,8 @@ class ParkingPlacesController < ApplicationController
       @parking_places = ParkingPlace.paginate(page: params[:page])
     end
 
-    @pocet = pocetuz
-    @towns = mesta
+   # @pocet = pocetuz
+   # @towns = mesta
   end
   
   def create
@@ -68,7 +68,7 @@ end
  private
 
  def pocetuz
-   query = "SELECT p.ulica , Count(*) as count FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica"
+   #query = "SELECT p.ulica , Count(*) as count FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica"
    connection = ActiveRecord::Base.connection
    connection.execute(query)
  end
@@ -80,7 +80,7 @@ end
     # connection.execute(query)
 
 
-     @m =  Location.select("locations.city, count(*) AS count").joins("LEFT JOIN parking_places ON parking_places.location_id = locations.id").group("locations.id")
+    # @m =  Location.select("locations.city, count(*) AS count").joins("LEFT JOIN parking_places ON parking_places.location_id = locations.id").group("locations.id")
  end
 
  def parking_places_params
