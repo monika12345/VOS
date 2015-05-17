@@ -41,7 +41,7 @@ class ParkingPlacesController < ApplicationController
     end
 
    # @pocet = pocetuz
-   # @towns = mesta
+    @towns = mesta
   end
   
   def create

@@ -1,5 +1,0 @@
-<h1>Parkovacie miesta</h1>
-
-<ol class="parking_places">
-  <%= render @parking_places %>
-</ol>

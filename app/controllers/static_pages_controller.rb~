@@ -1,7 +1,0 @@
-class StaticPagesController < ApplicationController
-  def login
-  end
-
-  def registration
-  end
-end
