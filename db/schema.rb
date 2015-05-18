@@ -48,5 +48,6 @@ ActiveRecord::Schema.define(version: 20150409114004) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
   add_foreign_key "parking_places", "users"
 end

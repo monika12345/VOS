@@ -14,6 +14,7 @@ before_action :admin_user,  only: :destroy
 
 
  def index
+
    @parking_plac = current_user.parking_places.build if logged_in?
     @users = User.paginate(page: params[:page])
  end

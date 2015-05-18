@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get 'search' => 'parking_places#index'
   post 'search' => 'parking_places#index'
+  get 'vytvorenie' => 'locations#new'
   get 'registration' => 'users#new'
   get 'prihlasenie'  => 'static_pages#login'
   get 'about' => 'static_pages#about'
