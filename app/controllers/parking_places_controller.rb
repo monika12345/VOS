@@ -17,7 +17,7 @@ class ParkingPlacesController < ApplicationController
  #end
 
   def index
-
+    @parking_plac = current_user.parking_places.build if logged_in?
    # @pocet= ParkingPlace.fin_by_sql( "SELECT  Count(*) FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica LIMIT(1))")
    # connection = ActiveRecord::Base.connection
    # connection.execute(q).first
