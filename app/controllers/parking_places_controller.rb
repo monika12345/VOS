@@ -28,13 +28,13 @@ class ParkingPlacesController < ApplicationController
 
 
 
-    if(params[:q] != nil)
-          @pp= ParkingPlace.where(spz: params[:q]).first
-         @parking_places = @pp
+    #if(params[:q] != nil)
+       #   @pp= ParkingPlace.where(spz: params[:q]).first
+        # @parking_places = @pp
         if(params[:s] != nil)
            @rr= ParkingPlace.where(ulica: params[:s])
             @parking_places = @rr
-        end
+
     else
       @parking_places= ParkingPlace.all
       @parking_places = ParkingPlace.paginate(page: params[:page])
