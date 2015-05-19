@@ -63,6 +63,13 @@ class ParkingPlacesController < ApplicationController
 
 
 def destroy
+
+    #2. User.find_by_sql("DELETE FROM users WHERE  users.id = #{params[:id]}")
+    ParkingPlace.find(params[:id]).destroy
+
+    flash[:success] = "Parking place deleted"
+    redirect_to users_url
+
 end
 
  private

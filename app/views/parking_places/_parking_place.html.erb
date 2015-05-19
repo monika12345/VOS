@@ -9,8 +9,12 @@
      <h7 class="timespan">
            Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
      </h7>
-
+      <%  if current_user.name == 'Monika Filipcikova'%>
+              <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,
+                          data: { confirm: "You sure?" } %>
+         <%end%>
     <div class="col-sm-12">
+
 
      <hr>
 
