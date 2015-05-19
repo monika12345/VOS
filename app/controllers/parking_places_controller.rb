@@ -68,7 +68,7 @@ def destroy
     ParkingPlace.find(params[:id]).destroy
 
     flash[:success] = "Parking place deleted"
-    redirect_to users_url
+    redirect_to parking_places_url
 
 end
 
