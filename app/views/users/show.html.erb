@@ -19,17 +19,74 @@
               <% if @user.parking_places.any? %>
                   <h3>Parkovacie miesta (<%= @user.parking_places.count %>)</h3>
                   <ol class="parking_places">
-                     <%= render @parking_places %>
+                    <% @parking_places.each do |p| %>
+                        <h4 class="user">
+                          <%= link_to @user.name, @user %>
+                        </h4>
+
+                        <%if (p.from <= DateTime.now)  && (p.to >= DateTime.now) %>
+                            <svg width="10" height="10">
+                              <rect   width="10" height="10" style="fill:#3feae1;stroke:#5a5a5a;stroke-width:0,5;opacity:0.5" />
+                            </svg>
+
+                        <%else%>
+                            <svg width="10" height="10">
+                              <rect width="10" height="10" style="fill:#f4051f;stroke:black;stroke-width:0,5;opacity:0.5" />
+                            </svg>
+
+                        <%end%>
+                        <h3 class="content">
+                          <%= p.spz %>
+                        </h3>
+
+                        <h4>
+                          <%= p.location.city %>
+                        </h4>
+                        <h4>
+                          Ulica: <%= p.ulica %>
+                        </h4>
+                        <h7 class="timespan">
+                          Posted <%= time_ago_in_words(p.created_at) %> ago.
+                        </h7>
+
+                        <% if p.user == current_user %>
+                            <%= form_for(p) do |f| %>
+
+                                <div class="field">
+
+                                  <p><%= f.datetime_select :from %>
+                                    <%= f.datetime_select :to %></p>
+                                </div>
+                                <%= f.submit "Uprav", class: "btn btn-primary" %>
+
+
+                            <% end %>
+
+                        <% else%>
+                            <h3>
+                              volne od <b><%=p.from.to_formatted_s(:short)%></b> do <b><%=p.to.to_formatted_s(:short)%></b>
+                            </h3>
+                        <%end%>
+                        <% if current_user.name == 'Monika Filipc'%>
+                            <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,
+                                        data: { confirm: "You sure?" } %>
+                        <%end%>
+                        <div class="col-sm-12">
+
+
+                          <hr>
+
+                          </hr>
+
+                        </div>
+                        <%end%>
                    </ol>
-                   <%= will_paginate @parking_places %>
+
                <% end %>
        </div>
 
     </div>
 </div>
 
-<button class="continue">AHoj</button>
-<script>
-    $( "button.continue" ).html( "Next Step..." )
-        </script>
+
 </html>

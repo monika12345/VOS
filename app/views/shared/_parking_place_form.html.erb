@@ -2,10 +2,12 @@
 <%= form_for(@parking_plac) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :spz, placeholder: "Zadaj spz." %>
-     <%= f.text_area :ulica, placeholder: "Zadaj ulicu" %>
-    <%= f.label :location_id %>
-   <%= f.collection_select :location_id, Location.all, :id, :city %> 
+        <%= f.text_area :spz, placeholder: "Zadaj spz." %>
+        <%= f.text_area :ulica, placeholder: "Zadaj ulicu" %>
+        <%= f.label :location_id %>
+        <%= f.collection_select :location_id, Location.all, :id, :city %>
+        <p><%= f.datetime_select :from %>
+        <%= f.datetime_select :to %></p>
   </div>
   <%= f.submit "Vytvor", class: "btn btn-primary" %>
 

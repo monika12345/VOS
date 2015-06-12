@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+body {
+
+background-image: url("auto.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    font-family: 'Lora', 'Times New Roman', serif;
+    font-size: 20px;
+    background-size: 20 px;
+
+}

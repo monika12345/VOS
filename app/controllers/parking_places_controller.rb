@@ -60,7 +60,24 @@ class ParkingPlacesController < ApplicationController
           render 'static_pages/login'
        end
    end
+def edit
+  end
 
+
+ def update
+
+   #3.  query = "UPDATE users SET name = '#{params[:user][:name]}', email = '#{params[:user][:email]}', updated_at = now() WHERE id = #{@user.id}"
+   #3. connection = ActiveRecord::Base.connection
+   #3. connection.execute(query)
+   @parking_place = ParkingPlace.find(params[:id])
+   if @parking_place.update_attributes(parking_places_params)
+     flash[:success] = "Parkovacie miesto aktualizovane"
+     redirect_to parking_places_path
+   else
+
+     render 'edit'
+   end
+ end
 
 def destroy
 
@@ -92,6 +109,6 @@ end
 
  def parking_places_params
 
-   params.require(:parking_place).permit(:spz, :ulica, :location_id)
+   params.require(:parking_place).permit(:spz, :ulica, :location_id, :from,:to)
  end
 end 

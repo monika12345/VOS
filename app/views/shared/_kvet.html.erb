@@ -1,0 +1,58 @@
+<h4 class="user">
+  <%= link_to @parking_place.user.name, parking_place.user %>
+</h4>
+
+<%if (@parking_place.from <= DateTime.now)  && (@parking_place.to >= DateTime.now) %>
+    <svg width="10" height="10">
+      <rect   width="10" height="10" style="fill:#3feae1;stroke:#5a5a5a;stroke-width:0,5;opacity:0.5" />
+    </svg>
+    <button> <form> <%=link_to 'Prenajat', @parking_place.user %></form></button>
+<%else%>
+    <svg width="10" height="10">
+      <rect width="10" height="10" style="fill:#f4051f;stroke:black;stroke-width:0,5;opacity:0.5" />
+    </svg>
+
+<%end%>
+<h3 class="content">
+  <%= @parking_place.spz %>
+</h3>
+
+<h4>
+  <%= parking_place.location.city %>
+</h4>
+<h4>
+  Ulica: <%= parking_place.ulica %>
+</h4>
+<h7 class="timespan">
+  Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
+</h7>
+
+<% if parking_place.user == current_user %>
+    <%= form_for(parking_place) do |f| %>
+
+        <div class="field">
+
+          <p><%= f.datetime_select :from %>
+            <%= f.datetime_select :to %></p>
+        </div>
+        <%= f.submit "Uprav", class: "btn btn-primary" %>
+
+    <% end %>
+<% else %>
+    <h3>
+      volne od <b><%=parking_place.from.to_formatted_s(:short)%></b> do <b><%=parking_place.to.to_formatted_s(:short)%></b>
+    </h3>
+
+<%end%>
+<% if current_user.name == 'Monika Filipc'%>
+    <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,
+                data: { confirm: "You sure?" } %>
+<%end%>
+<div class="col-sm-12">
+
+
+  <hr>
+
+  </hr>
+
+</div>
