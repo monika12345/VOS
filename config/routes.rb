@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'search' => 'parking_places#index'
   get 'vytvorenie' => 'locations#new'
   get 'registration' => 'users#new'
+  get 'prenajom' => 'rentals#new'
   get 'prihlasenie'  => 'static_pages#login'
   get 'about' => 'static_pages#about'
   get  'login' => 'sessions#new'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :parking_places
   resources :locations
+  resources :rentals
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

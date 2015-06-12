@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(version: 20150612110748) do
     t.integer  "price"
     t.integer  "duration"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "parking_place_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.datetime "to"
     t.datetime "from"
   end
 
+  add_index "rentals", ["parking_place_id"], name: "index_rentals_on_parking_place_id", using: :btree
   add_index "rentals", ["user_id"], name: "index_rentals_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
