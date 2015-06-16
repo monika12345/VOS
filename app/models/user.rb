@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
    has_many :parking_places, dependent: :destroy
-     has_many :rentals
+   has_many :rentals
    attr_accessor :remember_token, :activation_token
     before_save   :downcase_email
     before_create :create_activation_digest

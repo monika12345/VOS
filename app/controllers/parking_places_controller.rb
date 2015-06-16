@@ -3,18 +3,24 @@ class ParkingPlacesController < ApplicationController
  attr_accessor :pp
   def new 
     @parking_place = ParkingPlace.new
+
   end
 
   def show
+
     @parking_place = ParkingPlace.find(params[:id])
     @user = User.find(@parking_place.user_id)
-   
+    @rental = current_user.rentals.build if logged_in?
+
   end
 
  #def search
   # @parking_places= ParkingPlace.where(spz: params[:q]).first
    #flash[:success] = "ParkingPlace found!"
  #end
+
+
+
 
   def index
     @parking_plac = current_user.parking_places.build if logged_in?
@@ -24,34 +30,32 @@ class ParkingPlacesController < ApplicationController
     # @parking_place = ParkingPlace.search(params[:search])
     #@parking_place = ParkingPlace.find_by(params[:spz])
     #redirect_to root_url
-
-
-
-
-    #if(params[:q] != nil)
+   #if(params[:q] != nil)
        #   @pp= ParkingPlace.where(spz: params[:q]).first
         # @parking_places = @pp
-        if(params[:s] != nil)
-           @rr= ParkingPlace.where(ulica: params[:s])
-            @parking_places = @rr
+        if(params[:s] != "")
 
-    else
-      @parking_places= ParkingPlace.all
-      @parking_places = ParkingPlace.paginate(page: params[:page])
-    end
+          @rr= ParkingPlace.where(ulica: params[:s])
+          @parking_places = @rr
+        else
+          @parking_places= ParkingPlace.all
 
-   # @pocet = pocetuz
+           # @parking_places = ParkingPlace.paginate(page: params[:page])
+            end
+    # @pocet = pocetuz
     @towns = mesta
   end
-  
+
+
+
   def create
         @parking_place = current_user.parking_places.build(parking_places_params)
-      
-       #@idcko= current_user.id
-       # query = "INSERT INTO parking_places (user_id, spz, ulica, location_id, created_at, updated_at) VALUES ( #{@idcko} ,  '#{params[:parking_place][:spz]}' , '#{params[:parking_place][:ulica]}' , #{params[:parking_place][:location_id]}, (now()), (now()))"
-    # @parking_place = current_user.parking_places.build(parking_places_params)
-     #connection = ActiveRecord::Base.connection
-       # @parking_place = connection.execute(query)
+
+        #@idcko= current_user.id
+        # query = "INSERT INTO parking_places (user_id, spz, ulica, location_id, created_at, updated_at) VALUES ( #{@idcko} ,  '#{params[:parking_place][:spz]}' , '#{params[:parking_place][:ulica]}' , #{params[:parking_place][:location_id]}, (now()), (now()))"
+        # @parking_place = current_user.parking_places.build(parking_places_params)
+        #connection = ActiveRecord::Base.connection
+        # @parking_place = connection.execute(query)
       
       if @parking_place.save
           flash[:success] = "Parkovacie miesto vytvorene"
@@ -111,4 +115,5 @@ end
 
    params.require(:parking_place).permit(:spz, :ulica, :location_id, :from,:to)
  end
-end 
+
+end
