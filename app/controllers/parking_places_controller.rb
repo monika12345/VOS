@@ -23,7 +23,34 @@ class ParkingPlacesController < ApplicationController
 
 
   def index
+    @par = ParkingPlace.find_by(params[:id])
+
+    @ren  = Rental.find_by(params[:parking_place_id])
+    @nove = []
+     @hodina = 0.hour
+    if(@ren != nil)
+    if( @ren.reservations.count != 0)
+       @ren.reservations.each do |m|
+         while((@ren.from  + @hodina) < @ren.to)
+         if(@ren.from + @hodina != m.from)
+           @nove.push(@ren.from + @hodina)
+           @hodina = @hodina+1.hour
+
+         end
+           end
+       end
+    else
+      while((@ren.from  + @hodina) < @ren.to)
+          @nove.push((@ren.from + @hodina))
+          @hodina = @hodina +1.hour
+        end
+     end
+
+end
+
+    @reservation = current_user.reservations.build if logged_in?
     @parking_plac = current_user.parking_places.build if logged_in?
+
    # @pocet= ParkingPlace.fin_by_sql( "SELECT  Count(*) FROM parking_places p JOIN users u  ON u.id = p.user_id GROUP BY p.ulica LIMIT(1))")
    # connection = ActiveRecord::Base.connection
    # connection.execute(q).first
@@ -33,15 +60,14 @@ class ParkingPlacesController < ApplicationController
    #if(params[:q] != nil)
        #   @pp= ParkingPlace.where(spz: params[:q]).first
         # @parking_places = @pp
-        if(params[:s] != "")
+    @parking_places= ParkingPlace.all
+    if((params[:s] != "" ) && (params[:s] != nil))
 
-          @rr= ParkingPlace.where(ulica: params[:s])
-          @parking_places = @rr
-        else
-          @parking_places= ParkingPlace.all
+      @rr= ParkingPlace.where(ulica: params[:s])
+      @parking_places = @rr
+      # @parking_places = ParkingPlace.paginate(page: params[:page])
+    end
 
-           # @parking_places = ParkingPlace.paginate(page: params[:page])
-            end
     # @pocet = pocetuz
     @towns = mesta
   end

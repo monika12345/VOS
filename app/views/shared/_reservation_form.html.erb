@@ -1,0 +1,13 @@
+<% @i = @ren.id %>
+<%= form_for(@reservation) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <% @reservation.rental_id = @i%>
+      <%= f.hidden_field :rental_id %>
+      <% hidden_field_tag :rental_id , :@i  %>
+      <%= f.select :from, options_for_select(@nove) %>
+
+    </div>
+    <%= f.submit "Vytvor", class: "btn btn-primary" %>
+
+<% end %>

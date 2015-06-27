@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reservations/new'
+
   get 'sessions/new'
 
   root 'sessions#new'
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   get 'park_places/new'
 
   get 'users/new'
+  resources :reservations
   resources :users
   resources :account_activations, only: [:edit]
   resources :parking_places

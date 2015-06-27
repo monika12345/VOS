@@ -1,21 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+
+</head>
+  <% if parking_place.rentals.count > 0 %>
 <h4 class="user">
   <%= link_to parking_place.user.name, parking_place.user %>
 </h4>
 
-<%if (parking_place.from <= DateTime.now)  && (parking_place.to >= DateTime.now) %>
-          <svg width="10" height="10">
-                <rect   width="10" height="10" style="fill:#3feae1;stroke:#5a5a5a;stroke-width:0,5;opacity:0.5" />
-          </svg>
-           <form> <%=link_to 'Prenajat', parking_place %></form>
-<%else%>
-          <svg width="10" height="10">
-               <rect width="10" height="10" style="fill:#f4051f;stroke:black;stroke-width:0,5;opacity:0.5" />
-          </svg>
 
-<%end%>
 <h3 class="content">
      <%= parking_place.spz %>
+  <%= parking_place.rentals.last.price %> € /hod.
 </h3>
 
 <h4>
@@ -28,13 +25,17 @@
      Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
 </h7>
 
-
     <h3>
-        volne od <b><%=parking_place.from.to_formatted_s(:short)%></b> do <b><%=parking_place.to.to_formatted_s(:short)%></b>
+      volne od <b><%=parking_place.rentals.last.from.to_formatted_s(:short)%></b> do <b><%=parking_place.rentals.last.to.to_formatted_s(:short)%></b>
     </h3>
+      <% @nove.each do |m| %>
+    <%= m %>
+<% end %>
+    <% parking_place.rentals.each do |r| %>
+      <%= render 'shared/reservation_form'%>
+        <%end%>
 
-
-      <% if current_user.name == 'Monika Filipc'%>
+    <% if current_user.name == 'Monika Filipc'%>
              <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,
                           data: { confirm: "You sure?" } %>
          <%end%>
@@ -46,3 +47,6 @@
       </hr>
 
      </div>
+
+<% end %>
+</html>

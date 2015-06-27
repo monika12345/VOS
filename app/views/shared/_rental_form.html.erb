@@ -1,15 +1,17 @@
+
 <%= form_for(@rental) do |f| %>
-    <% @rental.parking_place_id = @parking_place.id%>
+
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
       <%= f.hidden_field :parking_place_id %>
       <%= hidden_field_tag 'selected', 'none'  %>
-      <%= f.text_field :duration, type: "number" , placeholder: "trvanie" %>
+
       <%= f.text_field :price, placeholder: "Cenu" %>
 
       <p><%= f.datetime_select :from %>
         <%= f.datetime_select :to %></p>
     </div>
     <%= f.submit "Vytvor", class: "btn btn-primary" %>
+
 
 <% end %>

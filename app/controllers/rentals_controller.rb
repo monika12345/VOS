@@ -6,7 +6,7 @@ class RentalsController < ApplicationController
 
 
   def create
-    @rental = current_user.rentals.build(rental_params)
+    @rental = Rental.create(rental_params)
 
 
 

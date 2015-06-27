@@ -10,6 +10,8 @@ before_action :admin_user,  only: :destroy
     #1.@user = User.find_by_sql("SELECT * FROM users WHERE users.id = #{params[:id]}").first
      @user = User.find(params[:id])
     @parking_places = @user.parking_places.paginate(page: params[:page])
+     @rental = Rental.new
+
    end
 
 

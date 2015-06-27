@@ -6,8 +6,7 @@
         <%= f.text_area :ulica, placeholder: "Zadaj ulicu" %>
         <%= f.label :location_id %>
         <%= f.collection_select :location_id, Location.all, :id, :city %>
-        <p><%= f.datetime_select :from %>
-        <%= f.datetime_select :to %></p>
+
   </div>
   <%= f.submit "Vytvor", class: "btn btn-primary" %>
 
