@@ -4,6 +4,7 @@
 
 
 </head>
+<div class ="obdlznik">
   <% if parking_place.rentals.count > 0 %>
 <h4 class="user">
   <%= link_to parking_place.user.name, parking_place.user %>
@@ -11,23 +12,21 @@
 
 
 <h3 class="content">
-     <%= parking_place.spz %>
-  <%= parking_place.rentals.last.price %> € /hod.
+  Ulica: <%= parking_place.ulica %>
+
+  <span class="posun"><%= parking_place.rentals.last.price %> € /hod.</span>
 </h3>
+     <h4>SPZ: <%= link_to parking_place.spz, parking_place.user %> Mesto: <%= parking_place.location.city %></h4>
 
 <h4>
-    <%= parking_place.location.city %>
-</h4>
-<h4>
-     Ulica: <%= parking_place.ulica %>
-</h4>
-<h7 class="timespan">
-     Posted <%= time_ago_in_words(parking_place.created_at) %> ago.
-</h7>
 
-    <h3>
-      volne od <b><%=parking_place.rentals.last.from.to_formatted_s(:short)%></b> do <b><%=parking_place.rentals.last.to.to_formatted_s(:short)%></b>
-    </h3>
+</h4>
+
+
+
+      <h4 class="timespan">
+      Na prenájom <b><%=parking_place.rentals.last.from.to_formatted_s(:short)%></b> - <b><%=parking_place.rentals.last.to.to_formatted_s(:short)%></b>
+    </h4>
 
 
 
@@ -36,6 +35,7 @@
 
 <% @nove = []%>
     <% @hodina = 0.hour %>
+
 
       <%= render 'shared/reservation_form'%>
 
@@ -47,11 +47,13 @@
     <div class="col-sm-12">
 
 
-     <hr>
+     <hr class="hrr">
 
       </hr>
 
      </div>
 
 <% end %>
+</div>
+
 </html>

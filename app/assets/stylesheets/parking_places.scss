@@ -1,69 +1,83 @@
 // Place all the styles related to the Parking_places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.navbar-brand {
-  color: #777;
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1em;
-  letter-spacing: -1px;
+
+.pn2
+{
+  padding-top: 20px;
 }
 
-.section
+span.posun
 {
-  height: 300px;
-  background-color:#e7e7e7;
-  align-content: center;
-  padding-right: 10px;
-  margin-top: 10px;
+  padding-left: 400px;
+  font-weight: bold;
+
 }
-.mesta
+.btn.btn-primary
 {
-  color:dodgerblue;
-  font-size: medium;
+  margin-left: 50px;
+
+}
+h4.cervena
+{
+  color: red;
+}
+.obdlznik
+{
+  width: 900px;
   padding-top: 10px;
-  margin-top: 20px;
+
+
+  border-width: medium;
+  border-color: #BBBBBB;
 }
-.navbar-brand span {
-  color: #68A4C4;
+header{
+  padding-bottom: 60px;
 }
-.panel1
+body{
+   background-color: #e5edf4;
+}
+
+.sec
 {
- // background: blanchedalmond;
-  display: inherit;
-  background: #ffffff;
-  min-height: 100px;
-  width: 100px;
- // height: 100px;
-
-  margin: 30px;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-right: 15px;
+padding-top: 3px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background: mintcream;
 }
-
-p {
-  line-height: 1.5;
-}
-hr{
-  
-  color: #0085a1;
-}
-
 section.panel2
 {
-  background-color: #e3e3e3;
-}
-.container
-{
-  margin-top: 30px;
-
 
 }
+
 h3
 {
 
   font-style: italic;
 
 }
+.fiel
+{
+  width: 100px;
+}
+.buton
+{
+  margin-left: 100px;
+
+  background-color: #23527c;
+}
+.vyhladaj
+{
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.container
+{
+  paddinga-top: 20px;
+  background-color: #ffffff;
+}
+hr.hrr {
+  width: 1000px;
+  border: 0; height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }

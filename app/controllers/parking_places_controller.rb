@@ -24,9 +24,6 @@ class ParkingPlacesController < ApplicationController
 
   def index
     @par = ParkingPlace.find_by(params[:id])
-
-
-
     @rental_last  = Rental.find_by(params[:parking_place_id])
 
     @nove = []
@@ -55,6 +52,12 @@ class ParkingPlacesController < ApplicationController
        #   @pp= ParkingPlace.where(spz: params[:q]).first
         # @parking_places = @pp
     @parking_places= ParkingPlace.all
+    @somarina = params[:q]
+    @int  = 3
+    if(@somarina == @rental_last.from)
+      @int = 78
+
+    end
     if((params[:s] != "" ) && (params[:s] != nil))
 
       @rr= ParkingPlace.where(ulica: params[:s])

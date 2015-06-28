@@ -2,12 +2,14 @@
 <%= form_for(@parking_plac) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-        <%= f.text_area :spz, placeholder: "Zadaj spz." %>
-        <%= f.text_area :ulica, placeholder: "Zadaj ulicu" %>
-        <%= f.label :location_id %>
+        <%= f.label 'SPZ'%>
+        <%= f.text_field :spz, placeholder: "Zadajte spz v tvare BA 789PZ", class: "fiel" %>
+        <%= f.label 'Ulica'%>
+    <%= f.text_field :ulica, placeholder: "Zadajte ulicu parkovacieho miesta" %>
+        <%= f.label 'Mesto' %>
         <%= f.collection_select :location_id, Location.all, :id, :city %>
 
-  </div>
-  <%= f.submit "Vytvor", class: "btn btn-primary" %>
 
+  <%= f.submit "Vytvoriť", class:"btn btn-primary" %>
+  </div>
 <% end %>

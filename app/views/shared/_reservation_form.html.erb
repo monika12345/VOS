@@ -1,4 +1,5 @@
 <% @volne  = true%>
+
 <% @rezervacie = @rental_last.reservations%>
 <% @picovina = @rezervacie.count%>
 <% if @rental_last != nil%>
@@ -26,6 +27,10 @@
     <%end%>
 
 <%end%>
+<%if @nove.count ==0%>
+    <h4 class="cervena">Parkovacie miesto už nemá voľné rezervácie</h4>
+    <%else%>
+    <h2> Voľné rezervácie</h2>
 <% @i = @rental_last.id %>
 
 <%= form_for(@reservation) do |f| %>
@@ -36,7 +41,8 @@
       <% hidden_field_tag :rental_id , :@i  %>
       <%= f.select :from, options_for_select(@nove) %>
 
-    </div>
-    <%= f.submit "Vytvor", class: "btn btn-primary" %>
+    <%= f.submit "Rezervuj parkovacie miesto", class: "btn btn-primary" %>
 
+    </div>
 <% end %>
+<%end%>

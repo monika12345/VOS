@@ -1,37 +1,31 @@
-<div class="container">
-  <section class="panel panel2 panel-default">
+<header>
+  </header>
+<body>
+<%if  @current_user.parking_places.count == 0%>
+  <div class="sec">
+
+    <h3>Pridajte si vaše parkovacie miesto</h3>
     <%= render 'shared/parking_place_form'%>
 
-  </section>
-  <div class ="row">
-         <div class = "col-md-3 col-md-4">
-             <section class="panel panel2 panel-default">
-                  <!--<div class="panel panel1 panel-default" xmlns="http://www.w3.org/1999/html">-->
-                     <!-- <div class = "panel-heading">-->
+  </div>
+<%end%>
 
-                          <!-- <div class="mesta">MESTA</div>-->
-                     <!-- </div >-->
+               <div class="vyhladaj">
+                  <h3>Vyhľadaj parkovacie miesta</h3>
 
-
-                  <!--</div>-->
-
-        <!--  <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
-          </iframe> -->
-                  <h2>Vyhladaj</h2>
-                  <p class="small">
                       <%= render 'parking_places/search' %>
-                  </p>
+            </div>
 
-             </section>
+
         </div>
-        <div class="col-xs-12 col-md-6">
-                <div class = "panel-heading">
+        <div class="container">
+                <div class = "pn2">
                     <ol class="parking_places">
                         <%= render @parking_places %>
                     </ol>
                 </div>
         </div>
 
-  </div>
-</div>
 
+
+</body>
