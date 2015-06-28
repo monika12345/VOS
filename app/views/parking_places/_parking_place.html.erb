@@ -28,12 +28,17 @@
     <h3>
       volne od <b><%=parking_place.rentals.last.from.to_formatted_s(:short)%></b> do <b><%=parking_place.rentals.last.to.to_formatted_s(:short)%></b>
     </h3>
-      <% @nove.each do |m| %>
-    <%= m %>
-<% end %>
-    <% parking_place.rentals.each do |r| %>
+
+
+
+<% @rental_last  = parking_place.rentals.last %>
+
+
+<% @nove = []%>
+    <% @hodina = 0.hour %>
+
       <%= render 'shared/reservation_form'%>
-        <%end%>
+
 
     <% if current_user.name == 'Monika Filipc'%>
              <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,

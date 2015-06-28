@@ -1,4 +1,33 @@
-<% @i = @ren.id %>
+<% @volne  = true%>
+<% @rezervacie = @rental_last.reservations%>
+<% @picovina = @rezervacie.count%>
+<% if @rental_last != nil%>
+    <% if @rezervacie.count > 0 %>
+        <%while((@rental_last.from  + @hodina) < @rental_last.to)%>
+            <% @rezervacie.each do |m| %>
+                <%@pokus = m.from%>
+                <%@pokus2 = (@rental_last.from + @hodina)%>
+                <% if m.from == (@rental_last.from + @hodina) %>
+                    <% @volne  = false%>
+                <%end%>
+            <% end %>
+            <%if @volne == true%>
+                <%@nove.push((@rental_last.from + @hodina))%>
+
+            <%end%>
+            <%@hodina = @hodina +1.hour%>
+            <% @volne = true%>
+        <%end%>
+    <% else %>
+        <%while((@rental_last.from  + @hodina) < @rental_last.to)%>
+            <%@nove.push((@rental_last.from + @hodina))%>
+            <%@hodina = @hodina +1.hour%>
+        <%end%>
+    <%end%>
+
+<%end%>
+<% @i = @rental_last.id %>
+
 <%= form_for(@reservation) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">

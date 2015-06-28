@@ -25,28 +25,22 @@ class ParkingPlacesController < ApplicationController
   def index
     @par = ParkingPlace.find_by(params[:id])
 
-    @ren  = Rental.find_by(params[:parking_place_id])
+
+
+    @rental_last  = Rental.find_by(params[:parking_place_id])
+
     @nove = []
      @hodina = 0.hour
-    if(@ren != nil)
-    if( @ren.reservations.count != 0)
-       @ren.reservations.each do |m|
-         while((@ren.from  + @hodina) < @ren.to)
-         if(@ren.from + @hodina != m.from)
-           @nove.push(@ren.from + @hodina)
-           @hodina = @hodina+1.hour
 
-         end
-           end
-       end
-    else
-      while((@ren.from  + @hodina) < @ren.to)
-          @nove.push((@ren.from + @hodina))
-          @hodina = @hodina +1.hour
+    if(@rental != nil)
+        @rezervacie  = @rental_last.reservations
         end
-     end
 
-end
+
+
+
+
+
 
     @reservation = current_user.reservations.build if logged_in?
     @parking_plac = current_user.parking_places.build if logged_in?
@@ -85,7 +79,7 @@ end
       
       if @parking_place.save
           flash[:success] = "Parkovacie miesto vytvorene"
-          redirect_to parking_places_path
+          redirect_to @current_user
       else
           render 'static_pages/login'
        end
