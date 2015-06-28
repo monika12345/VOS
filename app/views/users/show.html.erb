@@ -3,24 +3,19 @@
 <div class="center jumbotron">
 
    <header>
-     <title>hellllllp</title>
+
    </header>
 
    <div class = "row">
-     <aside class= "col-md-4">
-        <section class = "user_info">
-            <%= @user.name %>, <%= @user.email %>
-        </section>
-
-     </aside>
+     <h2 class="user">
+       <%= link_to @user.name, @user %>
+     </h2>
       <div class="col-md-8">
               <% if @user.parking_places.any? %>
                   <h3>Parkovacie miesta (<%= @user.parking_places.count %>)</h3>
                   <ol class="parking_places">
                     <% @parking_places.each do |p| %>
-                        <h4 class="user">
-                          <%= link_to @user.name, @user %>
-                        </h4>
+
 
 
                         <h3 class="content">
@@ -33,12 +28,9 @@
                         <h4>
                           Ulica: <%= p.ulica %>
                         </h4>
-                        <h7 class="timespan">
-                          Posted <%= time_ago_in_words(p.created_at) %> ago.
-                        </h7>
 
-
-
+                        <div class="prenajom">
+                        <h2>Nastavenie času prenájmu</h2>
                         <%= form_for(@rental) do |f| %>
                              <% @rental.parking_place_id = p.id %>
                             <%= render 'shared/error_messages', object: f.object %>
@@ -47,14 +39,15 @@
                               <%= hidden_field_tag 'selected', 'none'  %>
 
                               <%= f.text_field :price, placeholder: "Cenu" %>
-
-                              <p><%= f.datetime_select :from %>
-                                <%= f.datetime_select :to %></p>
+                              <%= f.label 'Voľné od'%>
+                              <h4><%= f.label 'Od'%><%= f.datetime_select :from %></h4>
+                              <h4><%= f.label 'Do'%><%= f.datetime_select :to %></h4>
                             </div>
-                            <%= f.submit "Vytvor", class: "btn btn-primary" %>
+                            <%= f.submit "Vytvor prenájom", class: "btn btn-primary pp" %>
 
 
                         <% end %>
+                          </div>
 
 
 

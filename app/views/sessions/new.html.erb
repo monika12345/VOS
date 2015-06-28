@@ -1,5 +1,5 @@
 <div class ="panel">
-<h1>Log in</h1>
+<h1>Prihlásenie</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -8,18 +8,17 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :Heslo %>
       <%= f.password_field :password, class: 'form-control' %>
         
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
+
+
+
   
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Prihlásiť sa", class: "btn btn-primary" %>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", login_path %></p>
+
   </div>
 </div>
 </div>
