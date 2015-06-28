@@ -56,7 +56,7 @@ class ParkingPlacesController < ApplicationController
 
 
 
-    
+
     if((params[:s] != "" ) && (params[:s] != nil))
 
       @rr= ParkingPlace.where(ulica: params[:s])
