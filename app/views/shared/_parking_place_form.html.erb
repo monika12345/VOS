@@ -3,9 +3,9 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
         <%= f.label 'SPZ'%>
-        <%= f.text_field :spz, placeholder: "Zadajte spz v tvare BA 789PZ", class: "fiel" %>
+        <%= f.text_field :spz, class: "fiel" %>
         <%= f.label 'Ulica'%>
-    <%= f.text_field :ulica, placeholder: "Zadajte ulicu parkovacieho miesta" %>
+    <%= f.text_field :ulica %>
         <%= f.label 'Mesto' %>
         <%= f.collection_select :location_id, Location.all, :id, :city %>
 

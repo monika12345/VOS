@@ -11,7 +11,7 @@ class RentalsController < ApplicationController
 
 
     if @rental.save
-      flash[:success] = "Parkovacie miesto prenajate"
+
       redirect_to parking_places_path
     else
       render 'static_pages/login'

@@ -39,7 +39,7 @@
                               <%= f.hidden_field :parking_place_id %>
                               <%= hidden_field_tag 'selected', 'none'  %>
 
-                              <%= f.text_field :price, placeholder: "Cenu" %>
+                              <p><%= f.text_field :price, placeholder: "Cena" %> Eur/hod.</p>
                               <%= f.label 'Voľné od'%>
                               <h4><%= f.label 'Od'%><%= f.datetime_select :from %></h4>
                               <h4><%= f.label 'Do'%><%= f.datetime_select :to %></h4>

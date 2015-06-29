@@ -80,7 +80,7 @@ class ParkingPlacesController < ApplicationController
         # @parking_place = connection.execute(query)
       
       if @parking_place.save
-          flash[:success] = "Parkovacie miesto vytvorene"
+
           redirect_to @current_user
       else
           render 'static_pages/login'

@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
     # @parking_place = connection.execute(query)
 
     if @reservation.save
-      flash[:success] = "Parkovacie miesto prenajate"
+
       redirect_to parking_places_path
     else
       render 'static_pages/login'
