@@ -36,10 +36,10 @@
 <% @nove = []%>
     <% @hodina = 0.hour %>
 
-
+     <div class ="res">
       <%= render 'shared/reservation_form'%>
 
-
+   </div>
     <% if current_user.name == 'Monika Filipc'%>
              <%= link_to 'Zmaz parkovacie miesto', parking_place, method: :delete,
                           data: { confirm: "You sure?" } %>
